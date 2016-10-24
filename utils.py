@@ -76,7 +76,8 @@ def BFS(graph, s = None):
 
 
 def find_largest_cc(graph):
-    nodes = graph.keys()
+    nodes, edges = graphToLists(graph)
+    nodes = nodes
     largest = 0
     conComp = []
     while len(nodes) > 0:
@@ -88,7 +89,8 @@ def find_largest_cc(graph):
             nodes.remove(i)
     out = {}
     for i in conComp:
-        out[i] = graph[i]
+        if i in graph:
+            out[i] = graph[i]
     return out
 
 
@@ -96,12 +98,12 @@ def getRanEdge(graph, seed = False):
     if seed:
         random.seed(5311995)
     tail = random.choice(graph.keys())
-    head = randome.choice(graph[tail].keys())
+    head = random.choice(graph[tail].keys())
     return [tail,head]
 
 
 def getRanNode(graph, seed = False):
-    if seed:
+    if seed == True:
         random.seed(5311995)
     nodes = []
     for i in graph:
