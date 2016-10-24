@@ -1,7 +1,12 @@
 
 import random
 
-
+##
+#Input: a file name (string)
+#Output: a dictionary such that keys are tails of edges and values are dictionaries
+#such that keys and tails of edges and values are dictionaries such that the keys
+#is attribute name and value is the value of the attribute
+#assumes directed graphs
 def readIn(filename):
     File = open(filename, 'r')
     data = File.read()
@@ -26,7 +31,9 @@ def readIn(filename):
                         dic[row[0]][row[1]][header[j]] = row[2]
     return dic
 
-
+##
+#Input: graph of format described in readIn, boolean to indicate directed
+#Output: A list of nodes and a list of edges which are two element lists.
 def graphToLists(graph, direc = False):
     nodes = []
     edges = []
@@ -40,7 +47,10 @@ def graphToLists(graph, direc = False):
                 edges.append([i,j])
     return nodes, edges
 
-
+##
+#Input: graph of format described in readIn
+#Output: a dictionary such that keys are nodes and values are lists of neighbors
+#assumes undirected graph
 def graphToAdjList(graph):
     dic = {}
     for i in graph:
@@ -58,7 +68,9 @@ def graphToAdjList(graph):
                 dic[j] = [i]
     return dic
 
-
+##
+#Input: graph of format described in readIn and optional input for starting node
+#Output: a list of nodes that are all connected to the starting node.
 def BFS(graph, s = None):
     graph = graphToAdjList(graph)
     if s == None:
@@ -74,7 +86,9 @@ def BFS(graph, s = None):
                 Q.append(i)
     return visited
 
-
+#Input: graph of format described in readIn
+#OUtput: a graph of format described in readIn that is the largest connected
+#component of the input graph
 def find_largest_cc(graph):
     nodes, edges = graphToLists(graph)
     nodes = nodes
@@ -93,7 +107,9 @@ def find_largest_cc(graph):
             out[i] = graph[i]
     return out
 
-
+##
+#Input: graph of format described in readIn and option for seeding
+#Output: a random node (normally as string)
 def getRanEdge(graph, seed = False):
     if seed:
         random.seed(5311995)
@@ -101,7 +117,9 @@ def getRanEdge(graph, seed = False):
     head = random.choice(graph[tail].keys())
     return [tail,head]
 
-
+##
+#Input: graph of format described in readIn and option for seeding
+#Output: an random edge (normally as a list of two elements which are nodes)
 def getRanNode(graph, seed = False):
     if seed == True:
         random.seed(5311995)
