@@ -45,17 +45,18 @@ def graphToAdjList(graph):
     dic = {}
     for i in graph:
         for j in graph[i]:
-            if i in graph:
-                if not(j in graph[i]):
-                    graph[i].append(j)
+            if i in dic:
+                if not(j in dic[i]):
+                    dic[i].append(j)
             else :
-                graph[i] = [j]
+                dic[i] = [j]
 
-            if j in graph:
-                if not(i in graph[j]):
-                    graph[j].append(i)
+            if j in dic:
+                if not(i in dic[j]):
+                    dic[j].append(i)
             else :
-                graph[j] = [i]
+                dic[j] = [i]
+    return dic
 
 
 def BFS(graph, s = None):

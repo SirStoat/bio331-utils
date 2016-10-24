@@ -9,7 +9,7 @@ nodes, edges = graphToLists(graph)
 adj = graphToAdjList(graph)
 
 for i in adj:
-    print adj[i]
+    print i, adj[i]
 '''
 for i in nodes:
     print i
