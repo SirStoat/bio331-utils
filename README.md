@@ -7,6 +7,9 @@ These utility functions are used in Bio331, starting with Lab1.  They are wrappe
 
 - `json_utils.py` contains functions to write an annotated graph to a text file in [JSON](http://www.json.org/) format readable by GraphSpace.
 - `graphspace_utils.py` contains [curl commands](https://curl.haxx.se/docs/manpage.html) to post the JSON file to GraphSpace.
+- `utlis.py` contains functions to help with reading graph files and working with graphs
+- `toyGraph.txt` contains a toy graph that is directed and weighted
+- `example.py` This gives examples of the functions in utils.py.  Needs utils.py and toyGraph.py to run.
 
 Auto-generated documentation is available on the [Bio331 website](http://www.reed.edu/biology/courses/bio331/) under [Support Code](http://www.reed.edu/biology/courses/bio331/supportcode/index).
 
